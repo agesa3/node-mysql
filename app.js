@@ -69,6 +69,28 @@ app.get("/getPost/:id",(req,res)=>{
     });
 })
 
+//update single post
+app.get("/updatePost/:id",(req,res)=>{
+    let newTitle = "updated title"
+    let sql=`UPDATE posts SET title='${newTitle}' where id=${req.params.id}`;
+    let query =db.query(sql,(err,result)=>{
+        if(err) throw err
+        console.log(result)
+        res.send('  Post Updated')
+    });
+})
+
+//delete single post
+app.get("/delete/:id",(req,res)=>{
+    let sql=`DELETE from posts where id=${req.params.id}`;
+    let query =db.query(sql,(err,result)=>{
+        if(err) throw err
+        console.log(result)
+        res.send('  Post Deleted')
+    });
+})
+
+
 app.listen('3000',()=>{
     console.log('listening on port 3000')
 })
