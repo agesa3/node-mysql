@@ -49,6 +49,16 @@ app.get("/addPost",(req,res)=>{
     });
 })
 
+//select
+app.get("/getPosts",(req,res)=>{
+    let sql='SELECT * from posts';
+    let query =db.query(sql,(err,results)=>{
+        if(err) throw err
+        console.log(results)
+        res.send('Post Fetched')
+    });
+})
+
 app.listen('3000',()=>{
     console.log('listening on port 3000')
 })
