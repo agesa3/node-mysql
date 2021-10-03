@@ -42,8 +42,10 @@ app.get('/createpoststable',(req,res)=>{
 app.get("/addPost",(req,res)=>{
     let post={title:'Post One',body:'This is test Data'}
     let sql='INSERT INTO posts SET ?';
-    let query =db.query(sql,post,()=>{
-        
+    let query =db.query(sql,post,(err,result)=>{
+        if(err) throw err
+        console.log(result)
+        res.send('Post added')
     });
 })
 
