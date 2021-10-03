@@ -38,10 +38,14 @@ app.get('/createpoststable',(req,res)=>{
     })
 })
 
-
-
-
-
+//insert data
+app.get("/addPost",(req,res)=>{
+    let post={title:'Post One',body:'This is test Data'}
+    let sql='INSERT INTO posts SET ?';
+    let query =db.query(sql,post,()=>{
+        
+    });
+})
 
 app.listen('3000',()=>{
     console.log('listening on port 3000')
