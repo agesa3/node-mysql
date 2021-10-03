@@ -59,6 +59,16 @@ app.get("/getPosts",(req,res)=>{
     });
 })
 
+//select single post
+app.get("/getPost/:id",(req,res)=>{
+    let sql=`SELECT * from posts where id=${req.params.id}`;
+    let query =db.query(sql,(err,result)=>{
+        if(err) throw err
+        console.log(result)
+        res.send(' Single Post Fetched')
+    });
+})
+
 app.listen('3000',()=>{
     console.log('listening on port 3000')
 })
